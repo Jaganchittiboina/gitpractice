@@ -1,0 +1,286 @@
+Custom Exception:
+
+* if you are creating your own exception that is known as custom exception or user-defined exception.
+* by the help of custom exception, you can have your own exception and error msgs.
+* used to customize exception according to user need.
+
+How to create custom exception:
+* create a class and inherit exception class.
+* end your class
+
+example:
+fruitName:Apple/Mango
+
+i like mango
+
+else
+
+throw BadFoodExxception
+
+BadFoodException.java
+BadFood.java
+
+Multithreading:
+ Within a single process multiple threads are running simultaneously. Ex. Browser,Microsoft word, Garbage collector.
+
+Thread:
+- lightweight subprocess, a smallest unit of processing
+- share a common memory area
+- they don't allocate separate memory, so saves memory
+- it is mostly used in games and animation.
+
+Difference between process and thread:
+process:
+- can be reffered as program in execution
+- it has own memory address
+- heavyweight
+- do not depend on each other
+thread:
+- part of process, lightweight subprocess
+- share same memory address
+- lightweight
+- are not independent because they share same memory space.
+
+Thread Scheduler:
+- it is a part of JVM that decides which thread should run
+- there is no guarantee that which thread will be chosen to run
+- scheduler mainly uses scheduling algorithms to schedule thread.
+
+* They are two ways of creating threads
+  1.by extending thread class
+  2.by implementing runnable interface
+  
+ class abc extends thread
+{
+
+}
+class abc implements runnable
+{
+
+}
+
+Thread Life Cycle:
+1.New/Born: a thread is in new state if you create object of thread but before the invocation of start()
+2.Ready : a thread is in ready state means it is ready for execution, but scheduler has not selected it to be the running thread
+3.Runnable/Running : A thread is in runnable state if scheduler has selected it. and thread will start it's execution
+4.Not Runnable(Sleeping/waiting) : This is the state when thread is alive but not eligible to execute.
+  ex: if you are calling sleep(500), then thread will be in not runnable state for 500 millis       
+5.Dead: thread is in dead/terminate state when thread exits after execution of run() or by calling stop().
+
+Synchronization:
+- capability to control the access of multiple threads to any shared resource.
+- better option when we want to allow only one thread to access the shared resource
+- There are 2 ways:  
+  1]synchronized method   
+  2]synchronized block
+
+Types of thread:
+
+User thread:
+- thread which is created by java developer. ex.main thread
+- all threads created inside main() are by default non daemon thread, because your main thread is non-daemon.
+
+Daemon thread:
+- low priority background threads which provides services to user thread
+- it's life is depend on user thread. If no user thread is running then JVM can exit even if daemon threads are running
+- JVM doesn't wait for daemon threads to finish
+- you can change user thread to daemon thread by using setDaemon().
+
+Interthread communication/co-operation:
+
+ *  allows synchronized threads to communicate with each other
+- it is the mechanism in which thread is paused running in it's section and another thread is allowed to enter into same section to be executed
+- it is implemented by the following methods:
+    1.wait(): causes current thread to release the lock and wait until another thread invokes either notify() or notifyAll()
+    2.notify(): wakes up single thread that is waiting
+    3.notifyAll(): wakes up all threads that are waiting
+
+Stream:
+
+*it is a sequence of data and it is composed of bytes.
+*in java three streams are created for us automatically.
+  1.System.in     2.System.out     3.System.err
+ InputStream:it is used to read from a source
+ OutputStream:it is used to write data to a     destination.
+
+OutputSStream class:
+-it is an abstract class
+-it is super class of sll the classes representing an outputstream of byte.
+METHOD:
+1.public void write(int)throws ioexception
+2.public void write(byte[])throws ioexception
+3.public void close()throws ioexception.
+
+INPUTSTREAM CLASS:
+-an abstract class
+-it is super class of all classes representing an input stream of byte
+
+Method:
+1.public abstract int read()throws IOException
+2.public int available()throws IOException
+3.public void close()throws IOException
+
+Deserialization:
+- it is the process of reconstructing object from the serialized state
+ObjectInputStream class:
+- it deserializes objects and primitive data written using ObjectOutput Stream
+Methods:
+1.public final Object readObject()throws IOException, ClassNotFoundException: read object from the byte stream
+2.public void close()throws IOException
+
+COLLECTION:
+-it is architecture to store and manipulate group of objects.
+-introduced in java 1.2 version.
+
+-Array has fixed size.
+-it is complex to insert/delete element from start of array from middle of the array.
+-we need to write a code to search/sort array element,predefined methods are not available.
+
+ArrayList : 
+- internally uses growable array
+- can contain duplicate elements
+- maintains insertion order
+- non-synchronized
+- default capacity : 10
+- new capacity = (current capacity * 3/2)+1
+               = 15+1 = 16
+- Once arraylist reaches it's maximum capacity, a bigger arrayList object is going to be created,
+ copy all elements of 1st list into another,
+  and reference will refer to new list
+- it implements Serializable and Cloneable interfaces
+- ArrayList and vector implements RandomAccess interface
+- heterogeneous objects are allowed
+- null insertion is possible
+- best choice for retrieval but not for manipulation because it's slow
+
+LinkedList:
+- uses doubly linked list
+- non-synchronized
+- maintains insertion order
+- contains duplicate elements
+- null insertion is possible
+- heterogeneous objects are allowed
+- implements Serializable and Cloneable interface
+- best choice for manipulation but retrieval is slow
+
+Vector:
+-legacy class(present from 1st version,1.1)
+-uses growable array
+-synchronized
+-duplicate elements are allowed
+-insertion order
+-null insertion is possible
+-heterogeneous objects are allowed
+-implements serializable,cloneable and random-access interface
+-default capacity is 10
+-new capacity=current capacity*2
+-best choice for retrieval
+-enumeration interface can be used to traverse the list
+
+Stack:
+-child of vector
+-specially designed for last in first out(LIFO)
+methods:
+-object push(object o): used to insert an object
+-object pop():used to return and remove top of the stack.
+-int search(Object o): if the specified object is available it returns it's offset from top of the stack, if object is not available it returns -1. 
+
+Set:
+-unique elements,insertion order is not preserved
+
+Hashset(1.2):
+-uses Hashtable
+-all object will be inserted based on storecode of object(Hashing mechanism)
+-implements serializable and cloneable interface
+-heterogeneous objects are allowed
+-best choice for each operation
+
+LinkedHashSet:
+-child of Hashset
+-introduced ini 1.4 version
+-uses Hashtable and LimkedList
+-maintains insertion order
+-implements serializiable and cloneable interface
+-heterogeneous objects are allowed
+
+TreeSet:
+-uses balanced tree
+-maintains sorted(ascending order)
+- implements Serializable and Cloneable interface
+- heterogeneous objects are allowed
+- null insertion is not possible
+
+Queue: 
+-follows First In First Out(FIFO)
+PriorityQueue:
+- provides the facility of using Queue
+- but it does not order the element in FIFO manner
+Deque(I):
+- doubly ended queue(insertion and deletion from both the ends)
+- implemented in ArrayDeque and LinkedList class
+- null insertion is not allowed
+
+Map(I):
+- is not chain interface of Collection
+- it contains values on the basis of keys i.e. key-value pair
+- each pair is known as entry
+- it contains only unique keys, values can be duplicated
+- it is useful if you have to search, update or delete element on the basis of key
+
+Methods:
+1.Object put(Object key,Object value): used to insert entry in a Map
+2.void putAll(Map map): used to insert the specified Map
+3.Object remove(Object key): used to delete entry for the specified key
+4.Object get(Object key): used to return the value for the specified key
+5.boolean containsKey(Object key): used to search specified key from the Map
+6.Set keySet(): used to return a Set view containing all the keys
+7.Set entrySet(): used to return a Set view containing all the keys and values
+
+Map.Entry(I):
+-sub interface of map
+-provides methods to get keys and values
+
+Methods:
+1.object gethey():
+2.object getvalue():
+
+HashMap:
+- uses Hashtable
+- it maintains no order, it stores data on the basis of hashcode of keys
+- contains only unique keys
+- may have 1 null key and multiple null values
+
+TreeMap:
+- uses Balanced Tree
+- contains unique elements
+- maintains ascending order
+- it can not have null key but can have multiple null values
+
+Hashtable:
+- legacy class, 1.1 version
+- synchronized
+- it is an array of list. each list is known as bucket
+- the position of bucket is identified by calling hashcode()
+- contains only unique elements
+- may not have any null key or value
+
+Sorting List:
+- we can not sort the elements of List but Collections class provides methods for sorting the elements of List type.
+- you can sort list elements only if it is Comparable or Comparator
+- String class and Wrapper classes implements the Comparable interface, so if you store the object of String or wrapper classes, it will be Comparable.
+- if you want to sort user-defined objects, you need to implement Comparable or Comparator interface
+
+Comparable:
+- single sorting order
+- java.lang package
+- contains abstract method, compareTo(Object o)
+- Collections.sort(List);
+
+Comparator:
+- multiple sorting order
+- java.util.* package
+- contains abstract method, compare(Object o1, Object o2)
+- Collections.sort(List,Comparator);
+
+
+
